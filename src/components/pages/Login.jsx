@@ -3,6 +3,7 @@ import { Row, Col, Container, Card } from 'react-bootstrap';
 import SingninForm from '../forms/SingninForm';
 import validator from 'validator';
 import { isObjEmpty } from '../../helpers/Helpers';
+import Swal from 'sweetalert2';
 
 export default function Login() {
 
@@ -17,7 +18,7 @@ export default function Login() {
     errores.email = 'El correo electronico es invalido';
   }
 
-  if(!validator.isEmpty(password)){
+  if(validator.isEmpty(password)){
     errores.password = 'La contrasena esta vacia '
   }
 
@@ -30,8 +31,21 @@ export default function Login() {
 
     console.log(email);
     console.log(password);
+
+    // Si solo si se cumple de arriba se podra ingresar los datos y podra realizar una satisfaccion al entrar 
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "se a ingresado exitosamente",
+      showConfirmButton: false,
+      timer: 1500
+    });
         
   }
+
+
+
 
 
 
